@@ -1,3 +1,5 @@
+let order = false;
+
 const loadPosts = async(limit) =>{
     toggleSpinner(true)
     const url = 'https://openapi.programming-hero.com/api/ai/tools'
@@ -10,6 +12,7 @@ const loadPosts = async(limit) =>{
 
     const displayPost = (posts,limit) =>{ 
     const postContainer = document.getElementById('post-container');
+    postContainer.innerHTML='';
     // display 6 features only 
     const showAll = document.getElementById('show-all'); 
     if(limit && posts.length > limit) {
@@ -19,6 +22,16 @@ const loadPosts = async(limit) =>{
     else{
         showAll.classList.add('d-none');
     }
+//order change
+        if(order){ 
+            // posts=      posts.sort((a, b) => (new Date(a.published_in) > new Date(b.published_in)) ? 1 : -1)
+            console.log(posts);
+            posts.sort(function(a,b){
+                return(new Date(a.published_in) > new Date(b.published_in)) ? 1 : -1 
+              }); 
+
+        }
+
     // display all features
     posts.forEach(post =>{ 
  
@@ -159,5 +172,6 @@ document.getElementById("exampleInputOutput").innerHTML =`
  
 
 function orderByDate() {
-    alert('ok')
+    order=!order;
+    loadPosts()
 }
