@@ -10,3 +10,38 @@
     height: 100%;
     width: 100%;
 }
+.accuracyBadge{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+.btn-close{
+    float: right;
+    margin-right: -15px;
+    margin-top: -15px;
+    background: red;
+    color: #FFE;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+
+.leftSection{
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #EB57570D;
+}
+
+.rightSection{
+
+}
+.priceBox{
+    padding: 10px;
+    background: #fff;
+    margin: 10px;
+    border-radius: 10px;
+    width: 26%;
+    overflow: hidden;
+    font-size: 14px;
+}
