@@ -16,7 +16,7 @@
     <!-- header part -->
     <header class="text-center mt-4">
         <h1 class="fs-1 fw-bold">AI Universe Hub</h1>
-        <div class="btn btn-danger mb-4">Sort By Date</div>
+        <div class="btn btn-danger mb-4" onclick="orderByDate()">Sort By Date</div>
     </header>
 
     <!-- main part -->
@@ -52,21 +52,22 @@
     <div class="modal fade" id="showDetails" tabindex="-1" aria-labelledby="showDetails" aria-hidden="true">
         <div class="modal-dialog  modal-dialog-centered modal-lg">
             <div class="modal-content">
+              <div class="">
+                <button type="button" class="btn-close "  data-bs-dismiss="modal" aria-label="Close">
+                    X
+                </button>
+              </div>
 
                 <div class="modal-body">
                     <div class="row p-5">
-                        <div class="col-md-6">
+                        <div class="col-md-6 leftSection">
                             <div class="row">
                                 <b id="toolDescription">
                                     
                                 </b>
                             </div>
-                            <div class="row" id="priceTable">
-                                <div class="col-md-4"><span id="firstPrice"></span> <span id="firstPlan"></span></div>
-                                 
-                                <div class="col-md-4"><span id="secPrice"></span> <span id="secPlan"></span></div>
-                                 
-                                <div class="col-md-4"><span id="thirdPrice"></span> <span id="thirdPlan"></span></div>
+                            <div class="row align-content-center d-flex justify-content-center row" id="priceTable">
+                                
                                  
                             </div>
                             <div class="row">
@@ -84,14 +85,14 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
-                            <div class="w-100">
-                                <img class="img-thumbnail" src="" alt="" id="toolImage">
-                                <div class="btn btn-danger">    <span id="score"></span>    % accuracy</div>
+                        <div class="col-md-6 rightSection">
+                            <div class="w-100 position-relative">
+                                <span class="badge bg-danger accuracyBadge">    <span id="score"></span>% accuracy</span>
+                                <img class="img-fluid" src="" alt="" id="toolImage">
+                               
                             </div>
-                            <div>
-                                <h1>Hi, how are you doing today?</h1>
-                                <p>I'm doing well, thank you for asking. How can I assist you today?</p>
+                            <div id="exampleInputOutput">
+                                 
                             </div>
                         </div>
                     </div>

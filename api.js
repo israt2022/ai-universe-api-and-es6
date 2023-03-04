@@ -90,7 +90,7 @@ function dateFormate(date){
     var month = dateObj.getMonth() + 1; 
     var day = dateObj.getDate();
     var year = dateObj.getFullYear();    
-   return newdate = year + "/" + month + "/" + day;
+   return newdate = day + "-" + month + "-" + year;
 }
 
 
@@ -101,33 +101,33 @@ loadPosts(6)
 
 const loadSinglePost = async(id) =>{
 
-    toggleSpinner(true)
+    // toggleSpinner(true)
     const url = 'https://openapi.programming-hero.com/api/ai/tool/'+id
     const res = await fetch(url);
     const data = await res.json();     
     const tool =data.data;
-console.log(tool);
+// console.log(tool);
 
 document.getElementById("toolDescription").innerHTML =tool.description; 
 
 let priceTable='';
 tool.pricing.forEach(price=>{
     priceTable +=`
-    <div class="col-md-4"><span>${price.price}</span> <span>${price.plan}</span></div>
+    <div class="col-md-4 priceBox"><span>${price.price}</span> <span>${price.plan}</span></div>
     `
 })
 document.getElementById("priceTable").innerHTML =priceTable;  
-
-console.log(tool.features);
  
-// let featureList='';
+ 
+let featureList='';
 
-// tool.features.forEach(feature=>{
-//     featureList +=`
-//      <li>sad</li>
-//     `
-// })
-// document.getElementById("priceTable").innerHTML =featureList;  
+for(feature_index in tool.features){
+   let feature =tool.features[feature_index];
+    featureList +=`
+     <li>${feature.feature_name}</li>
+    `;
+};
+document.getElementById("featureList").innerHTML =featureList;  
 
  
 let intregrateList='';
@@ -139,10 +139,17 @@ tool.integrations.forEach(intregrate=>{
 })
 document.getElementById("intregrateList").innerHTML =intregrateList;  
  
-
+let accuracy_value= (100 * tool.accuracy.score) / 1;
 document.getElementById("toolImage").setAttribute('src',tool.image_link[0]);  
-document.getElementById("score").innerHTML =tool.accuracy;  
+document.getElementById("score").innerHTML =accuracy_value;  
 
+
+let example =tool.input_output_examples[0];
+ 
+document.getElementById("exampleInputOutput").innerHTML =`
+                                <h1>${example.input}</h1>
+                                <p>${example.output}</p>
+`;
 
 
 } 
@@ -150,3 +157,7 @@ document.getElementById("score").innerHTML =tool.accuracy;
 
  
  
+
+function orderByDate() {
+    alert('ok')
+}
